@@ -10,16 +10,20 @@ class App:
     """ Super awesome temperature generator """
 
     def __init__(self):
+        # 色彩
+        self.bg = '#ffffff'
+        self.fg = '#000000'
+        # GUI
         self.root = Tk()
         self.root.geometry('400x140')
-        self.root['background'] = '#000000'
+        self.root['background'] = self.bg
         self.root.title('超级一键体温生成器')
         self.text = StringVar()
         self.label = Label(
             self.root,
             textvariable=self.text,
             font=('微软雅黑', 30),
-            bg='#000000'
+            bg=self.bg
         )
         # 乱码
         self.mess_code = StringVar()
@@ -27,8 +31,8 @@ class App:
             self.root,
             textvariable=self.mess_code,
             font=('微软雅黑', 14),
-            fg='#ffffff',
-            bg='#000000'
+            fg=self.fg,
+            bg=self.bg
         )
         with open('bin.txt', 'r', encoding='utf-8') as f:
             self.mess = f.read().replace('\n', '').replace(' ', '')
