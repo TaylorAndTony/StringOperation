@@ -51,13 +51,13 @@ class App:
     def generate(self):
         """ generate ready-to-use temperature """
         temp = gen_three_temp()
-        self.root.after(20, self.animate)
         pc.copy(temp)
         self.tiwen = temp
 
     def run(self):
         """ start the program """
         kb.add_hotkey('ctrl+v', self.generate)
+        self.root.after(20, self.animate)
         self.layout()
         self.generate()
         self.root.mainloop()
