@@ -34,15 +34,8 @@ class App:
         # delete previous
         self.canvas.delete(self.text)
         # random positon
-        if self.x > self.width or self.y > self.height:
-            self.x += -20
-            self.y += -20
-        elif self.x < 0 or self.y < 0:
-            self.x += 20
-            self.y += 20
-        else:
-            self.x += random.randint(-15, 15)
-            self.y += random.randint(-15, 15)
+        self.x = random.randint(20, 300)
+        self.y = random.randint(20, 100)
         # change temp
         self.text = self.canvas.create_text(
             self.x, self.y, text=self.tiwen, font=('微软雅黑', 24))
@@ -50,7 +43,7 @@ class App:
 
     def generate(self):
         """ generate ready-to-use temperature """
-        temp = gen_three_temp()
+        temp = gen_three_temp_with_tab()
         pc.copy(temp)
         self.tiwen = temp
 
@@ -74,6 +67,17 @@ def gen_three_temp() -> str:
     for _ in range(3):
         res += single_temp() + '/'
     return res[:-1]
+
+def gen_three_temp_with_tab() -> str:
+    """ 返回诸如26.2\t36.1\t36.2\t烟台的字符串 """
+    res = []
+    res.append(single_temp())
+    while len(res) != 3:
+        new = single_temp()
+        if new != res[-1]:
+            res.append(new)
+    res.append('烟台')
+    return '\t'.join(res)
 
 
 if __name__ == '__main__':
