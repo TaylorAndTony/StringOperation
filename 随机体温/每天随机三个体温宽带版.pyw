@@ -34,12 +34,12 @@ class App:
         # delete previous
         self.canvas.delete(self.text)
         # random positon
-        self.x = random.randint(20, 300)
-        self.y = random.randint(20, 100)
+        self.x = random.randint(130, 200)
+        self.y = random.randint(50, 100)
         # change temp
         self.text = self.canvas.create_text(
-            self.x, self.y, text=self.tiwen, font=('微软雅黑', 24))
-        self.root.after(50, self.animate)
+            self.x, self.y, text=self.tiwen, font=('微软雅黑', 16))
+        self.root.after(60, self.animate)
 
     def generate(self):
         """ generate ready-to-use temperature """

@@ -47,6 +47,14 @@ def make_punctuation(text):
     return finalText.replace('。', '。\n')
 
 
+def mess_and_copy():
+    s = ''
+    for _ in range(10):
+        s += gen_utf_char(random.randint(20000, 30000))
+    print(s)
+    pc.copy(s)
+
+
 def mess():
     a = gen_random_utf_char(20000, 30000, 400)
     # pc.copy(a)
@@ -61,10 +69,23 @@ def test():
     print()
 
 
+def rand_less_strokes(times):
+    """
+    随机输出简单的汉字
+    """
+    s = ''
+    with open('chars.txt', 'r', encoding='utf-8') as f:
+        lst = list(f.read())
+    for _ in range(times):
+        s += random.choice(lst)
+    pc.copy(s)
+    print(s)
+
+
 if __name__ == '__main__':
     # 中文： 19968-40865
     START = 19968
     END = 40865
     BEGIN = 20000
     GAP = 20
-    test()
+    rand_less_strokes(30)
