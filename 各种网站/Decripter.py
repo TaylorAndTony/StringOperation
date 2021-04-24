@@ -14,7 +14,22 @@ def read_txt():
         return f.read()
 
 
+def decode_txt_to_new(target):
+    with open(target, 'r', encoding='utf-8') as f:
+        encoded = f.read()
+    decoded = decode(encoded)
+    with open('decoded.txt', 'w', encoding='utf-8') as f:
+        f.write(decoded)
+
+
+def encode_txt_to_new(target):
+    with open(target, 'r', encoding='utf-8') as f:
+        original = f.read()
+    encoded = encode(original)
+    with open('encoded.txt', 'w', encoding='utf-8') as f:
+        f.write(encoded)
+
+
 if __name__ == '__main__':
-    txt = read_txt()
-    dec = decode(txt)
-    print(dec)
+    encode_txt_to_new('./original.txt')
+    decode_txt_to_new('./encoded.txt')
