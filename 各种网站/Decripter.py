@@ -1,12 +1,33 @@
 import base64
 
 
-def encode(data):
+def offset_char(text, offset):
+    res = ''
+    for i in text:
+        res += chr(ord(i) + offset)
+    return res
+
+
+def b64encode(data):
     return base64.encodebytes(data.encode('utf-8')).decode('utf-8')
 
 
-def decode(data):
+def b64decode(data):
     return base64.decodebytes(data.encode('utf-8')).decode('utf-8')
+
+
+def encode(data):
+    b64 = b64encode(data)
+    off = offset_char(b64, -2)
+    b64_2 = b64encode(off)
+    return b64_2
+
+
+def decode(data):
+    b64 = b64decode(data)
+    off = offset_char(b64, 2)
+    b64_2 = b64decode(off)
+    return b64_2
 
 
 def read_txt():
