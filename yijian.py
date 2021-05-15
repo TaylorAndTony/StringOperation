@@ -55,5 +55,4 @@ class Waifu:
 
 
 if __name__ == '__main__':
-    # print(gen_word_2(50))
-    pass
+    print(gen_word_2(50))
