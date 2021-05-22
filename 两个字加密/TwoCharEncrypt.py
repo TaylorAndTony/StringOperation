@@ -93,4 +93,4 @@ def b64_aio(text, zero, one, sep='-'):
 
 if __name__ == '__main__':
     info = 'https://www.bilibili.com/'
-    ascii_aio(info, '非', '韭', '菲')
+    ascii_aio(info, '嗷', '唔', '~')
