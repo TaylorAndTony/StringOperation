@@ -1,5 +1,4 @@
 import random
-from time import sleep
 from tkinter import *
 
 import keyboard as kb
@@ -8,7 +7,6 @@ import pyperclip as pc
 
 class App:
     """ Super awesome temperature generator """
-
     def __init__(self):
         # 色彩
         self.bg = '#ffffff'
@@ -19,21 +17,17 @@ class App:
         self.root['background'] = self.bg
         self.root.title('超级一键体温生成器')
         self.text = StringVar()
-        self.label = Label(
-            self.root,
-            textvariable=self.text,
-            font=('微软雅黑', 30),
-            bg=self.bg
-        )
+        self.label = Label(self.root,
+                           textvariable=self.text,
+                           font=('微软雅黑', 30),
+                           bg=self.bg)
         # 乱码
         self.mess_code = StringVar()
-        self.mess_label = Label(
-            self.root,
-            textvariable=self.mess_code,
-            font=('微软雅黑', 14),
-            fg=self.fg,
-            bg=self.bg
-        )
+        self.mess_label = Label(self.root,
+                                textvariable=self.mess_code,
+                                font=('微软雅黑', 14),
+                                fg=self.fg,
+                                bg=self.bg)
         with open('bin.txt', 'r', encoding='utf-8') as f:
             self.mess = f.read().replace('\n', '').replace(' ', '')
 
@@ -87,13 +81,6 @@ def random_color():
     colors = [
         '#f5222d',
         '#ff7a45',
-        '#ffa940',
-        '#ffc53d',
-        '#ffec3d',
-        '#bae637',
-        '#73d13d',
-        '#36cfc9',
-        '#40a9ff',
         '#2f54eb',
         '#722ed1',
         '#eb2f96',
@@ -114,17 +101,11 @@ def random_font():
     return random.choice(f)
 
 
-def single_temp() -> str:
-    """ generate single random temperature """
-    return '36.' + str(random.randint(1, 6))
-
-
 def gen_three_temp() -> str:
-    """ generate three temperatures"""
-    res = ''
-    for _ in range(3):
-        res += single_temp() + '/'
-    return res[:-1]
+    """ generate single random temperature """
+    temps = ['36.1', '36.2', '36.3', '36.4', '36.5', '36.6']
+    random.shuffle(temps)
+    return '/'.join(temps[:3])
 
 
 if __name__ == '__main__':

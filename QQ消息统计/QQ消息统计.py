@@ -36,7 +36,7 @@ class QQMessageAnalyser:
             dct = {'name': name, 'time': send_time, 'content': content}
             self.mapping.append(dct)
         print(f'\033[32m{len(self.mapping)} analysed\033[0m')
-    
+
     def quick_check(self, limit=None):
         """ quickly check the analysed data """
         if limit:
@@ -47,7 +47,7 @@ class QQMessageAnalyser:
             print(group['name'], group['time'])
             print(group['content'])
             print()
-    
+
     def who_send(self):
         """ list who has sent messages """
         senders = set()
@@ -57,7 +57,8 @@ class QQMessageAnalyser:
         print(f'total {len(senders)} have sent message')
         pp(senders)
 
+
 if __name__ == '__main__':
     qq = QQMessageAnalyser()
     qq.analyse('msg.txt')
-    qq.quick_check()
+    qq.quick_check(5)

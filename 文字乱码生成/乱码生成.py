@@ -41,5 +41,5 @@ class MessGenerator:
 
 
 if __name__ == '__main__':
-    gen = MessGenerator('你好世界', 20, 30)
+    gen = MessGenerator('杜易简', 5, 10)
     gen.process()
